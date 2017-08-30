@@ -1,6 +1,7 @@
 # advert
 
-> 用了vue vuex vue-resource vue-lazyload vee-validate sass
+> 用了vue vuex vue-resource vue-lazyload vee-validate sass 路由拦截 接口响应拦截、请求拦截
+
 > 接口用的内网ip 暂时不能访问
 
 ## Build Setup
