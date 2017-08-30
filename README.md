@@ -1,6 +1,7 @@
 # advert
 
-> A Vue.js project
+> 用了vue vuex vue-resource vue-lazyload vee-validate sass
+> 接口用的内网ip 暂时不能访问
 
 ## Build Setup
 
