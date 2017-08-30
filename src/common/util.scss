@@ -1,0 +1,235 @@
+@mixin position($type, $top: auto, $right: auto, $bottom: auto, $left: auto, $width: auto, $height: auto) {
+  position: $type;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+  width: $width;
+  height: $height;
+}
+
+@function rem($value) {
+  @return ($value / 2) / 14 * 1rem;
+}
+
+@function imgHeight($width, $height) {
+  @return ($height / $width) * 100vw;
+}
+
+//0.5px边框
+@mixin retina-one-px-border($direction, $color) {
+  $child: 'after';
+  position: relative;
+  @if ($direction=='left' or $direction=='top') {
+    $child: 'before';
+  }
+  &:#{$child} {
+    content: " ";
+    position: absolute;
+    @if ($direction=='left') {
+      left: 0;
+      top: 0;
+      width: 1px;
+      height: 100%;
+      border-left: 1px solid $color;
+      transform: scaleX(0.5);
+    }
+    @if ($direction=='right') {
+      right: 0;
+      top: 0;
+      width: 1px;
+      height: 100%;
+      border-right: 1px solid $color;
+      transform: scaleX(0.5);
+    }
+    @if ($direction=='top') {
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 1px;
+      border-top: 1px solid $color;
+      transform: scaleY(0.5);
+    }
+    @if ($direction=='bottom') {
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 1px;
+      border-bottom: 1px solid $color;
+      transform: scaleY(0.5);
+    }
+    color: $color;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+  }
+}
+
+// 利用transform居中
+@mixin center-translate($direction: both) {
+  position: absolute;
+  @if $direction==both {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  @else if $direction==x {
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+  @else if $direction==y {
+    top: 50%;
+    transform: translate(0, -50%);
+  }
+}
+
+// 利用postion居中
+@mixin center($width, $height, $type: 'both', $css3: 'true') {
+  width: $width;
+  height: $height;
+  position: absolute;
+  @if $type=='both' {
+    top: 50%;
+    left: 50%;
+    @if $css3=='true' {
+      transform: translate(-50%, -50%);
+    }
+    @else {
+      margin-top: -$height/2;
+      margin-left: -$width/2;
+    }
+  }
+  @else if $type=='row' {
+    left: 50%;
+    @if $css3=='true' {
+      transform: translateX(-50%);
+    }
+    @else {
+      margin-left: -$width/2;
+    }
+  }
+  @else if $type=='column' {
+    top: 50%;
+    @if $css3=='true' {
+      transform: translateY(-50%);
+    }
+    @else {
+      margin-top: -$height/2;
+    }
+  }
+}
+
+// 多余字符省略
+@mixin ellipsis() {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+// 多行多余字符省略
+@mixin ellipsis-lines($lines: 2) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+// 清除浮动
+@mixin clearfix() {
+  &::before,
+  &::after {
+    content: "";
+    display: table;
+  }
+  &::after {
+    clear: both;
+  }
+}
+
+.clearfix {
+  @include clearfix();
+}
+
+// 只隐藏于视觉，屏幕浏览器可以阅读
+@mixin hidden-clip() {
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+  overflow: hidden;
+  height: 0;
+}
+
+.hidden-clip {
+  @include hidden-clip();
+}
+
+// 表单禁用
+@mixin disabled($colorText: #999, $colorBg: #e3e3e3, $colorBorder: false) {
+  background-color: $colorBg !important;
+  color: $colorText !important;
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+  @if $colorBorder {
+    border: 1px solid #d9d9d9 !important;
+  }
+}
+
+@mixin backgroundHover($color, $border: 'default') {
+  background-color: $color;
+  @if $border=='default' {
+    border: 1px solid $color;
+  }
+  @else if $border !='none' {
+    border: $border
+  }
+  &:hover {
+    background-color: darken($color, 10%);
+    @if $border=='default' {
+      border-color: darken($color, 10%);
+    }
+  }
+}
+
+
+/* 箭头
+* arrow(direction,size,color);
+*/
+
+@mixin arrow($direction, $size, $color) {
+  width: 0;
+  height: 0;
+  line-height: 0;
+  font-size: 0;
+  overflow: hidden;
+  border-width: $size;
+  cursor: pointer;
+  @if $direction==top {
+    border-style: dashed dashed solid dashed;
+    border-color: transparent transparent $color transparent;
+    border-top: none;
+  }
+  @else if $direction==bottom {
+    border-style: solid dashed dashed dashed;
+    border-color: $color transparent transparent transparent;
+    border-bottom: none;
+  }
+  @else if $direction==right {
+    border-style: dashed dashed dashed solid;
+    border-color: transparent transparent transparent $color;
+    border-right: none;
+  }
+  @else if $direction==left {
+    border-style: dashed solid dashed dashed;
+    border-color: transparent $color transparent transparent;
+    border-left: none;
+  }
+}
+
+.displayNone {
+  display: none !important;
+}
+
+.pointerEventsNone {
+  pointer-events: none;
+}

@@ -1,0 +1,77 @@
+html {
+  font-size: 14 / 375 * 100vw;
+}
+
+.container {
+  background: url('./assets/index-bg.png')no-repeat;
+  background-size: 100% 100%;
+  background-position: 0 0;
+}
+
+.el-message {
+  top: auto;
+  bottom: 20%;
+  left: calc((100vw - 300px) / 2);
+  transform: none;
+}
+
+.el-message-box {
+  width: 300px
+}
+
+.el-message-box__title {
+  text-align: center;
+}
+
+.el-message-box__btns {
+  border-top: 1px solid #eeeeee;
+  padding: 0;
+  display: flex;
+}
+
+.el-button:focus,
+.el-button:hover {
+  border-color: #898a8c;
+  color: #898a8c;
+}
+
+.el-button--primary {
+  color: #e65e22 !important;
+  background-color: #fff!important;
+  margin-left: 0 !important;
+  font-size: 15px;
+}
+
+.el-message-box {
+  .el-button {
+    flex: 1;
+    border: none;
+    color: #898a8c;
+    &:nth-child(2) {
+      position: relative;
+      &:after {
+        display: block;
+        content: '';
+        width: 1px;
+        height: 80%;
+        position: absolute;
+        left: 0;
+        top: 10%;
+        background-color: #eeeeee;
+      }
+    }
+  }
+}
+
+.el-message-box__status.el-icon-circle-cross {
+  color: #d9d9d9;
+}
+
+.el-message-box__status.el-icon-circle-check {
+  color: #f15a23;
+}
+
+.el-message-box__content {
+  color: #898a8c;
+  text-align: center;
+}

@@ -1,0 +1,51 @@
+.myreport {
+  background-color: #f2f2f2;
+  min-height: 100vh;
+  padding: rem(20);
+  .list {
+    background-color: #fff;
+    margin-bottom: rem(20);
+  }
+  .label-item {
+    padding: rem(20) 0;
+    margin: 0 rem(20);
+    font-size: rem(30);
+    color: #3d3745;
+    border-bottom: 1px dashed #cccccc;
+    &:last-child,
+    &:first-child {
+      border-bottom: none;
+    }
+    span {
+      color: #8b8c90;
+    }
+  }
+  .subtitle {
+    font-size: rem(24);
+  }
+  .title {
+    display: flex;
+    justify-content: space-between;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: 100% 100%;
+    padding: rem(20) rem(40);
+    margin: 0;
+    color: #fff;
+    span {
+      color: #fff;
+    }
+  }
+  .success {
+    background-image: url('../../assets/title-bg-green.png')
+  }
+  .error {
+    background-image: url('../../assets/title-bg-grey.png')
+  }
+  .error2 {
+    background-image: url('../../assets/title-bg-grey.png')
+  }
+  .effective {
+    background-image: url('../../assets/title-bg-red.png')
+  }
+}

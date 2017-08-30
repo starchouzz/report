@@ -1,0 +1,57 @@
+.login {
+  min-height: 100vh;
+  .banner {
+    height: rem(235);
+  }
+  .el-input-group {
+    width: 80%;
+    transform: translateX(13%);
+    border: 1px solid #f8b860; // height: rem(70);
+  }
+  .el-input-group--prepend .el-input__inner,
+  .el-input-group__append {
+    border: 0;
+    border-radius: 0;
+    background-color: transparent;
+    // color: #fff;
+  }
+  .el-button {
+    width: 80%;
+    height: rem(77);
+    font-size: rem(34);
+    transform: translateX(13%);
+    background-color: #f15a23;
+    border: 0;
+    border-radius: 0;
+    color: #fff;
+    border-radius: 3px;
+  }
+  .el-input-group__prepend {
+    border: 0;
+    border-radius: 0;
+    background-color: rgba(241, 90, 35, 0.2);
+  }
+  .form {
+    margin-top: rem(60);
+    .username {
+      margin-bottom: rem(38);
+      .username-pre {
+        background: url('../../assets/username.png')no-repeat;
+        background-size: 100% 100%;
+        background-position: 0 0;
+        width: rem(22);
+        height: rem(29); // 
+      }
+    }
+    .password {
+      margin-bottom: rem(118);
+      .password-pre {
+        background: url('../../assets/password.png')no-repeat;
+        background-size: 100% 100%;
+        background-position: 0 0;
+        width: rem(22);
+        height: rem(29);
+      }
+    }
+  }
+}
